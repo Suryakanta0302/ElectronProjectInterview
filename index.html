@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Application Helper</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .security-status {
+            background: #f0f9ff;
+            border: 1px solid #b0e0e6;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+        
+        #security-info {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            color: #333;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-fill {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-fill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-fill:active {
+            transform: translateY(0);
+        }
+        
+        .btn-open {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+        
+        .btn-open:hover {
+            background: #e8e8e8;
+            border-color: #667eea;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+        
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+        
+        .status.info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+            display: block;
+        }
+        
+        .url-display {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            word-break: break-all;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Apply For a Nonimmigrant Visa</h1>
+        <p class="subtitle">Online Nonimmigrant Visa Application (DS-160)</p>
+        
+        <div class="security-status">
+            <div id="security-info">Loading security status...</div>
+        </div>
+        
+        <div class="url-display">
+            <strong>Target URL:</strong><br>
+            https://ceac.state.gov/genniv/
+        </div>
+        
+       
+        
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country">
+                <option value="">Select Country</option>
+                <option value="TIA">ALBANIA, TIRANA</option>
+                <option value="ALG">ALGERIA, ALGIERS</option>
+                <option value="LUA">ANGOLA, LUANDA</option>
+                <option value="BNS">ARGENTINA, BUENOS AIRES</option>
+                <option value="YRV">ARMENIA, YEREVAN</option>
+            </select>
+        </div>
+                <!-- <div class=\"form-group\">
+            <label for=\"captcha\">CAPTCHA Code (Manual Entry)</label>
+            <input type=\"text\" id=\"captcha\" placeholder=\"Enter CAPTCHA shown on website\" maxlength=\"10\">
+            <small style=\"color: #666; margin-top: 5px; display: block;\">📋 You'll be prompted to enter CAPTCHA manually when auto-fill starts</small>
+        </div> -->
+                <div class="button-group">
+            <button class="btn-open" id="openBtn">Open Website</button>
+            <button class="btn-fill" id="fillBtn">Auto-Fill Form</button>
+        </div>
+        
+        <div class="status" id="status"></div>
+    </div>
+    
+    <script src="renderer.js"></script>
+</body>
+</html>
